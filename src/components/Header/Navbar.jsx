@@ -1,9 +1,10 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 const Navbar = () => {
     const menuItem = <>
-        <li><a>Home</a></li>
-        <li><a>About</a></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/about'>About</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
