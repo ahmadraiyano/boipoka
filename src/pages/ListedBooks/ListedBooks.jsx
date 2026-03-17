@@ -17,16 +17,16 @@ const ListedBooks = () => {
     );
     setReadBooks(books);
   }, [bookData]);
-  const handleSort = (type) => {
-    if (type === "Pages") {
-      setSort(type);
+  const handleSort = (sortType) => {
+    if (sortType === "Pages") {
+      setSort(sortType);
       const sortedByPages = [...readBooks].sort(
         (a, b) => a.totalPages - b.totalPages,
       );
       setReadBooks(sortedByPages);
     }
-    if (type === "Ratings") {
-      setSort(type);
+    if (sortType === "Ratings") {
+      setSort(sortType);
       const sortedByPages = [...readBooks].sort((a, b) => a.rating - b.rating);
       setReadBooks(sortedByPages);
     }
