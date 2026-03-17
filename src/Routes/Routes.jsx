@@ -4,6 +4,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
 import Details from "../pages/Details/Details";
+import ListedBooks from "../pages/ListedBooks/ListedBooks";
 
 export const router = createBrowserRouter([
   {
@@ -13,21 +14,39 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: ()=>fetch("/booksData.json"),
-        HydrateFallback: ()=> <span className="loading loading-spinner loading-xl"></span>,
-        path: '/',
-        Component: Home
+        loader: () => fetch("/booksData.json"),
+        HydrateFallback: () => (
+          <div className="flex h-screen items-center justify-center">
+            <span className="loading w-72 bg-gray-300 loading-spinner loading-xl"></span>
+          </div>
+        ),
+        path: "/",
+        Component: Home,
       },
       {
-        path: '/about',
-        Component: About
+        path: "/listedBooks",
+        loader: () => fetch("/booksData.json"),
+        HydrateFallback: () => (
+          <div className="flex h-screen items-center justify-center">
+            <span className="loading w-72 bg-gray-300 loading-spinner loading-xl"></span>
+          </div>
+        ),
+        Component: ListedBooks,
       },
       {
-        path: '/details/:id',
-        loader: ()=>fetch("/booksData.json"),
-        HydrateFallback: ()=> <span className="loading loading-spinner loading-xl"></span>,
-        Component: Details
-      }
-    ]
+        path: "/about",
+        Component: About,
+      },
+      {
+        path: "/details/:id",
+        loader: () => fetch("/booksData.json"),
+        HydrateFallback: () => (
+          <div className="flex h-screen items-center justify-center">
+            <span className="loading w-72 bg-gray-300 loading-spinner loading-xl"></span>
+          </div>
+        ),
+        Component: Details,
+      },
+    ],
   },
 ]);

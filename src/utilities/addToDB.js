@@ -20,4 +20,4 @@ const addToBookDB = id => {
     }
 }
 
-export {addToBookDB}
+export {addToBookDB, getStoredBook}
