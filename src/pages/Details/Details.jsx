@@ -1,5 +1,7 @@
 import React from "react";
+import { FaStar } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router";
+import { addToBookDB } from "../../utilities/addToDB";
 
 const Details = () => {
   const { id } = useParams();
@@ -18,6 +20,10 @@ const Details = () => {
     yearOfPublishing,
     rating,
   } = detail;
+
+  const handleMarkAsRead = id => {
+    addToBookDB(id)
+  }
 
   return (
     <div className="flex flex-col lg:flex-row my-8">
@@ -55,13 +61,13 @@ const Details = () => {
             <p>{totalPages}</p>
             <p>{publisher}</p>
             <p>{yearOfPublishing}</p>
-            <p>{rating}</p>
+            <p className="flex gap-1 items-center"><span className="text-amber-400"><FaStar /></span>{rating}</p>
           </div>
         </div>
         <div className="mt-4 flex gap-4">
-          <button className="btn btn-outline">Read</button>
+          <button onClick={()=>handleMarkAsRead(id)} className="btn btn-outline">Mark As Read</button>
           <button className="btn bg-[#50B1C9] hover:bg-gray-200">
-            Wishlist
+            Add To Wishlist
           </button>
         </div>
       </div>
